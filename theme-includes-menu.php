@@ -304,7 +304,7 @@ function theme_front_page_settings() {
 	<div class="chip-bar" style="margin-top: 30px;">
 		<div class="chip">
 			<img src="<?php echo get_template_directory_uri() . '/images/pipelon_avatar.jpeg' ?>" alt="Contact Person">
-			From Pipelon's Github with <a href="https://github.com/Pipeloncho/ditto-dev" target="_BLANK">love</a>.
+			From Pipelon's Github with <a href="https://github.com/Pipeloncho/ditto-theme" target="_BLANK">love</a>.
 		</div>
 		<div class="chip">
 			Ditto Theme V1.0
