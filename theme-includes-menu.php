@@ -307,7 +307,7 @@ function theme_front_page_settings() {
 			From Pipelon's Github with <a href="https://github.com/Pipeloncho/ditto-theme" target="_BLANK">love</a>.
 		</div>
 		<div class="chip">
-			Ditto Theme V1.0
+			Ditto Theme V1.0.1
 		</div>
 	</div>
 

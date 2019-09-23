@@ -4,5 +4,20 @@ Theme URI: ditto_theme
 Description: A WordPress theme with popular libraries to choose from.
 Author: SMkOnline
 Author URI: https://smkonline.co
-Version: 1.0
+Version: 1.0.1
 */
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+body, * p {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    line-height: 20px;
+    color: #00263A;
+    -webkit-font-smoothing: antialiased !important;
+}
+button:focus,
+input:focus,
+textarea:focus {
+    outline: none !important;
+}
