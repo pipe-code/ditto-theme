@@ -2,8 +2,8 @@
 /*** +Theme Includes ***/
 include_once 'theme-includes-menu.php';
 include_once 'theme-includes.php';
-include_once "inc/ct-post-duplicator.php";
-include_once "inc/ct-user-agent.php";
+include_once 'inc/ct-post-duplicator.php';
+include_once 'inc/ct-user-agent.php';
 /*** +Theme Includes ***/
 
 /*** +Register Theme Scripts ***/
@@ -14,13 +14,13 @@ add_action( 'wp_enqueue_scripts', 'ditto_theme_scripts');
 /*** -Register Theme Scripts ***/
 
 /*** +Register Navigation Menus ***/
-function intercolor_navigation_menus() {
+function ditto_theme_navigation_menus() {
   $locations = array(
     'main_menu' => __( 'Main Menu', 'text_domain' )
   );
   register_nav_menus( $locations );
 }
-add_action( 'init', 'intercolor_navigation_menus' );
+add_action( 'init', 'ditto_theme_navigation_menus' );
 /*** -Register Navigation Menus ***/
 
 /*** +Theme support ***/

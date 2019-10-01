@@ -25,19 +25,20 @@ function admin_custom_theme_scripts($hook) {
 
 function register_custom_theme_settings() {
 	//register main menu settings
-	register_setting( 'custom-theme-main-group', 'ct_owl_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_slick_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_gutenberg_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_custom_css_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_custom_js_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_materialize_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_vimeo_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_list_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_login_image_src' );
-	register_setting( 'custom-theme-main-group', 'ct_duplicator_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_user_agent_switch' );
-	register_setting( 'custom-theme-main-group', 'ct_hide_acf' );
-	register_setting( 'custom-theme-main-group', 'ct_bootstrap_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_owl_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_slick_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_gutenberg_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_custom_css_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_custom_js_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_materialize_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_vimeo_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_list_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_login_image_src' );
+	register_setting( 'custom-theme-main-group', 'dt_duplicator_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_user_agent_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_hide_acf' );
+	register_setting( 'custom-theme-main-group', 'dt_bootstrap_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_rellax_switch' );
 }
 add_action( 'admin_init', 'register_custom_theme_settings' );
 
@@ -51,9 +52,9 @@ function custom_theme_image_uploader($width, $height ) {
 
     $default_image = get_template_directory_uri() . '/images/login_default.svg';
 
-    if ( get_option('ct_login_image_src') ) {
-        $src = get_option('ct_login_image_src');
-        $value = get_option('ct_login_image_src');
+    if ( get_option('dt_login_image_src') ) {
+        $src = get_option('dt_login_image_src');
+        $value = get_option('dt_login_image_src');
     } else {
         $src = $default_image;
         $value = '';
@@ -66,7 +67,7 @@ function custom_theme_image_uploader($width, $height ) {
         <div class="upload">
             <img data-src="' . $default_image . '" src="' . $src . '" width="' . $width . 'px" height="' . $height . 'px" />
             <div>
-                <input type="hidden" name="ct_login_image_src" value="' . $value . '" />
+                <input type="hidden" name="dt_login_image_src" value="' . $value . '" />
                 <button type="submit" class="upload_image_button btn waves-effect waves-light">' . $text . '</button>
                 <button type="submit" class="remove_image_button btn waves-effect waves-light">&times;</button>
             </div>
@@ -90,29 +91,31 @@ function theme_front_page_settings() {
 	    <?php settings_fields( 'custom-theme-main-group' ); ?>
 	    <?php do_settings_sections( 'custom-theme-main-group' ); ?>
 	    <?php $checked_owl = ''; ?>
-	    <?php if (get_option('ct_owl_switch')) { $checked_owl = 'checked'; } ?>
+	    <?php if (get_option('dt_owl_switch')) { $checked_owl = 'checked'; } ?>
 	    <?php $checked_slick = ''; ?>
-	    <?php if (get_option('ct_slick_switch')) { $checked_slick = 'checked'; } ?>
+	    <?php if (get_option('dt_slick_switch')) { $checked_slick = 'checked'; } ?>
 	    <?php $checked_css = ''; ?>
-	    <?php if (get_option('ct_custom_css_switch')) { $checked_css = 'checked'; } ?>
+	    <?php if (get_option('dt_custom_css_switch')) { $checked_css = 'checked'; } ?>
 	    <?php $checked_js = ''; ?>
-	    <?php if (get_option('ct_custom_js_switch')) { $checked_js = 'checked'; } ?>
+	    <?php if (get_option('dt_custom_js_switch')) { $checked_js = 'checked'; } ?>
 	    <?php $checked_gutenberg = ''; ?>
-	    <?php if (get_option('ct_gutenberg_switch')) { $checked_gutenberg = 'checked'; } ?>
+	    <?php if (get_option('dt_gutenberg_switch')) { $checked_gutenberg = 'checked'; } ?>
 	    <?php $checked_materialize = ''; ?>
-	    <?php if (get_option('ct_materialize_switch')) { $checked_materialize = 'checked'; } ?>
+	    <?php if (get_option('dt_materialize_switch')) { $checked_materialize = 'checked'; } ?>
 	    <?php $checked_vimeo = ''; ?>
-	    <?php if (get_option('ct_vimeo_switch')) { $checked_vimeo = 'checked'; } ?>
+	    <?php if (get_option('dt_vimeo_switch')) { $checked_vimeo = 'checked'; } ?>
 	    <?php $checked_list = ''; ?>
-	    <?php if (get_option('ct_list_switch')) { $checked_list = 'checked'; } ?>
+	    <?php if (get_option('dt_list_switch')) { $checked_list = 'checked'; } ?>
 	    <?php $checked_duplicator = ''; ?>
-	    <?php if (get_option('ct_duplicator_switch')) { $checked_duplicator = 'checked'; } ?>
+	    <?php if (get_option('dt_duplicator_switch')) { $checked_duplicator = 'checked'; } ?>
 	    <?php $checked_user_agent = ''; ?>
-	    <?php if (get_option('ct_user_agent_switch')) { $checked_user_agent = 'checked'; } ?>
+	    <?php if (get_option('dt_user_agent_switch')) { $checked_user_agent = 'checked'; } ?>
 	    <?php $checked_hide_acf = ''; ?>
-	    <?php if (get_option('ct_hide_acf')) { $checked_hide_acf = 'checked'; } ?>
+	    <?php if (get_option('dt_hide_acf')) { $checked_hide_acf = 'checked'; } ?>
 	    <?php $checked_bootstrap = ''; ?>
-	    <?php if (get_option('ct_bootstrap_switch')) { $checked_bootstrap = 'checked'; } ?>
+	    <?php if (get_option('dt_bootstrap_switch')) { $checked_bootstrap = 'checked'; } ?>
+		<?php $checked_rellax = ''; ?>
+	    <?php if (get_option('dt_rellax_switch')) { $checked_rellax = 'checked'; } ?>
 
 	    <div class="api-options row">
             <!-- Vimeo API -->
@@ -121,7 +124,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_vimeo_switch" <?php echo $checked_vimeo; ?>>
+						<input type="checkbox" name="dt_vimeo_switch" <?php echo $checked_vimeo; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -138,7 +141,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_owl_switch" <?php echo $checked_owl; ?>>
+						<input type="checkbox" name="dt_owl_switch" <?php echo $checked_owl; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -153,7 +156,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_slick_switch" <?php echo $checked_slick; ?>>
+						<input type="checkbox" name="dt_slick_switch" <?php echo $checked_slick; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -168,7 +171,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_bootstrap_switch" <?php echo $checked_bootstrap; ?>>
+						<input type="checkbox" name="dt_bootstrap_switch" <?php echo $checked_bootstrap; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -183,7 +186,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_materialize_switch" <?php echo $checked_materialize; ?>>
+						<input type="checkbox" name="dt_materialize_switch" <?php echo $checked_materialize; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -198,13 +201,28 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_list_switch" <?php echo $checked_list; ?>>
+						<input type="checkbox" name="dt_list_switch" <?php echo $checked_list; ?>>
 						<span class="lever"></span>
 						On
 					</label>
 				</div>
 				<span class="helper-text" style="display: block; margin-top: 10px">
 					<a href="https://listjs.com/" target="_BLANK">Webpage</a>
+				</span>
+	    	</div>
+			<!-- Rellax -->
+	    	<div class="rellaxjs-switch col s6 m2">
+	    		<label>Rellax JS</label>
+	    		<div class="switch" style="margin-top: 10px;">
+					<label>
+						Off
+						<input type="checkbox" name="dt_rellax_switch" <?php echo $checked_rellax; ?>>
+						<span class="lever"></span>
+						On
+					</label>
+				</div>
+				<span class="helper-text" style="display: block; margin-top: 10px">
+					<a href="https://dixonandmoe.com/rellax/" target="_BLANK">Webpage</a>
 				</span>
 	    	</div>
 	    </div>
@@ -218,7 +236,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_custom_css_switch" <?php echo $checked_css; ?>>
+						<input type="checkbox" name="dt_custom_css_switch" <?php echo $checked_css; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -230,7 +248,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_custom_js_switch" <?php echo $checked_js; ?>>
+						<input type="checkbox" name="dt_custom_js_switch" <?php echo $checked_js; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -247,7 +265,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_gutenberg_switch" <?php echo $checked_gutenberg; ?>>
+						<input type="checkbox" name="dt_gutenberg_switch" <?php echo $checked_gutenberg; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -259,7 +277,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_duplicator_switch" <?php echo $checked_duplicator; ?>>
+						<input type="checkbox" name="dt_duplicator_switch" <?php echo $checked_duplicator; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -271,7 +289,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_user_agent_switch" <?php echo $checked_user_agent; ?>>
+						<input type="checkbox" name="dt_user_agent_switch" <?php echo $checked_user_agent; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -283,7 +301,7 @@ function theme_front_page_settings() {
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
 						Off
-						<input type="checkbox" name="ct_hide_acf" <?php echo $checked_hide_acf; ?>>
+						<input type="checkbox" name="dt_hide_acf" <?php echo $checked_hide_acf; ?>>
 						<span class="lever"></span>
 						On
 					</label>
@@ -307,7 +325,7 @@ function theme_front_page_settings() {
 			From Pipelon's Github with <a href="https://github.com/Pipeloncho/ditto-theme" target="_BLANK">love</a>.
 		</div>
 		<div class="chip">
-			Ditto Theme V1.0.1
+			Ditto Theme V1.0.2
 		</div>
 	</div>
 
