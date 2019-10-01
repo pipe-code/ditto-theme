@@ -39,6 +39,8 @@ function register_custom_theme_settings() {
 	register_setting( 'custom-theme-main-group', 'dt_hide_acf' );
 	register_setting( 'custom-theme-main-group', 'dt_bootstrap_switch' );
 	register_setting( 'custom-theme-main-group', 'dt_rellax_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_google_maps_switch' );
+	register_setting( 'custom-theme-main-group', 'dt_google_maps_api_key' );
 }
 add_action( 'admin_init', 'register_custom_theme_settings' );
 
@@ -90,6 +92,7 @@ function theme_front_page_settings() {
         <?php /* Option status */ ?>
 	    <?php settings_fields( 'custom-theme-main-group' ); ?>
 	    <?php do_settings_sections( 'custom-theme-main-group' ); ?>
+
 	    <?php $checked_owl = ''; ?>
 	    <?php if (get_option('dt_owl_switch')) { $checked_owl = 'checked'; } ?>
 	    <?php $checked_slick = ''; ?>
@@ -116,10 +119,12 @@ function theme_front_page_settings() {
 	    <?php if (get_option('dt_bootstrap_switch')) { $checked_bootstrap = 'checked'; } ?>
 		<?php $checked_rellax = ''; ?>
 	    <?php if (get_option('dt_rellax_switch')) { $checked_rellax = 'checked'; } ?>
+		<?php $checked_gm = ''; ?>
+	    <?php if (get_option('dt_google_maps_switch')) { $checked_gm = 'checked'; } ?>
 
 	    <div class="api-options row">
             <!-- Vimeo API -->
-	    	<div class="vimeo-switch owl-switch col s12">
+	    	<div class="vimeo-switch owl-switch col s6 m2">
 	    		<label>Enable Vimeo API</label>
 	    		<div class="switch" style="margin-top: 10px;">
 					<label>
@@ -130,6 +135,23 @@ function theme_front_page_settings() {
 					</label>
 				</div>
 	    	</div>
+			<div class="gm-switch col s6 m2">
+				<label>Enable Google Maps API</label>
+				<div class="switch" style="margin-top: 10px;">
+					<label>
+						Off
+						<input type="checkbox" name="dt_google_maps_switch" <?php echo $checked_gm; ?>>
+						<span class="lever"></span>
+						On
+					</label>
+				</div>
+			</div>
+			<div class="gm-api-key col s12 m8">
+				<div class="input-field">
+					<label>Google Maps API Key (ACF n' API)</label>
+					<input type="text" name="dt_google_maps_api_key" value="<?php echo esc_attr( get_option('dt_google_maps_api_key') ); ?>" />
+				</div>
+			</div>
 	    </div>
 
 	    <div class="divider" style="margin-top: 30px; margin-bottom: 20px;"></div>
@@ -227,7 +249,7 @@ function theme_front_page_settings() {
 	    	</div>
 	    </div>
 
-	    <div class="divider" style="margin-top: 30px; margin-bottom: 20px;"></div>
+	    <div class="divider" style="margin-top: 30px; margin-bottom: 30px;"></div>
 
 	    <div class="custom-css-js-options row">
             <!-- Custom CSS -->
@@ -256,7 +278,7 @@ function theme_front_page_settings() {
 	    	</div>
 	    </div>
 
-	    <div class="divider" style="margin-top: 30px; margin-bottom: 20px;"></div>
+	    <div class="divider" style="margin-top: 30px; margin-bottom: 30px;"></div>
 
 	    <div class="gutenberg-options row">
             <!-- Gutenberg -->
@@ -309,7 +331,7 @@ function theme_front_page_settings() {
 	    	</div>
 	    </div>
 
-	    <div class="divider" style="margin-top: 30px; margin-bottom: 20px;"></div>
+	    <div class="divider" style="margin-top: 30px; margin-bottom: 30px;"></div>
 
 	    <?php custom_theme_image_uploader( $width = 115, $height = 115 ); ?>
 
@@ -325,7 +347,7 @@ function theme_front_page_settings() {
 			From Pipelon's Github with <a href="https://github.com/Pipeloncho/ditto-theme" target="_BLANK">love</a>.
 		</div>
 		<div class="chip">
-			Ditto Theme V1.0.2
+			Ditto Theme V1.0.3
 		</div>
 	</div>
 

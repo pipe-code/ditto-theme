@@ -12,7 +12,10 @@ function ditto_theme_options_scripts(){
 
 	if (get_option('dt_vimeo_switch')) {
 		wp_enqueue_script('Vimeo_API', 'https://player.vimeo.com/api/player.js');
-    }
+	}
+	if (get_option('dt_google_maps_switch') && get_option('dt_google_maps_api_key') != '') {
+		wp_enqueue_script('Google_Maps_API', 'https://maps.googleapis.com/maps/api/js?key='.get_option('dt_google_maps_api_key'));
+	}
     if (get_option('dt_bootstrap_switch')) {
 		wp_enqueue_style('bootstrap_css', get_template_directory_uri() . '/inc/bootstrap-v4.3.1/bootstrap.min.css');
         wp_enqueue_script('jquery321', get_template_directory_uri() . '/inc/bootstrap-v4.3.1/jquery-3.2.1.min.js', array('jquery'), '3.2.1', true);
@@ -78,4 +81,13 @@ if (get_option('dt_hide_acf')) {
 	add_filter('acf/settings/show_admin', '__return_false');
 }
 /*** -Hide ACF ***/
+
+/*** +ACF Maps API Key ***/
+if (get_option('dt_google_maps_api_key') != '') {
+	function dt_acf_maps() {
+	    acf_update_setting('google_api_key', get_option('dt_google_maps_api_key'));
+	}
+	add_action('acf/init', 'dt_acf_maps');	
+}
+/*** -ACF Maps API Key ***/
 ?>
