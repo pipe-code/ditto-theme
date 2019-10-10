@@ -12,4 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
+<main id="dt_single">
+	<section>
+		<p>- Default single -</p>
+	</section>
+</main>
+
 <?php get_footer(); ?>

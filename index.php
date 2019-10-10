@@ -12,8 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<section class="section-footer-wrapper">
-    <?= get_template_part('partials/welcomeMessage') ?>
-</section>
+<main id="dt_index">
+    <section>
+        <?= get_template_part('partials/welcomeMessage') ?>
+    </section>
+</main>
 
 <?php get_footer(); ?>

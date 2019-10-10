@@ -12,4 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
+<main id="dt_page">
+	<section>
+		<p>- Default page -</p>
+	</section>
+</main>
+
 <?php get_footer(); ?>

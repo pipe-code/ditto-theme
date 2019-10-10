@@ -12,4 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
+<main id="dt_archive">
+	<section>
+		<p>- Default archive -</p>
+	</section>
+</main>
+
 <?php get_footer(); ?>

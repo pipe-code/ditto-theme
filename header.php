@@ -27,14 +27,15 @@ if ( ! defined( 'ABSPATH' ) ) {
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<div id="page">
+<div id="page"> <!-- +Page container -->
+
   <header id="header-wrapper">
     <div class="container">
       <nav class="navbar navbar-expand-lg" id="PR-navbar">
         <?php if (has_custom_logo()): ?>
           <?php the_custom_logo(); ?>
         <?php else: ?>
-          <a class="navbar-brand m-auto" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
+          <a class="navbar-brand mr-auto" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
         <?php endif ?>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <div class="PR-hamburguer">

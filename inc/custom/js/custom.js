@@ -19,5 +19,5 @@
 (function($) {
   $(window).ready(function(){
     // Code...
-  }  
+  });
 })( jQuery );

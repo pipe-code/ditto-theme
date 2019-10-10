@@ -41,6 +41,7 @@ function register_custom_theme_settings() {
 	register_setting( 'custom-theme-main-group', 'dt_rellax_switch' );
 	register_setting( 'custom-theme-main-group', 'dt_google_maps_switch' );
 	register_setting( 'custom-theme-main-group', 'dt_google_maps_api_key' );
+	register_setting( 'custom-theme-main-group', 'dt_notify_switch' );
 }
 add_action( 'admin_init', 'register_custom_theme_settings' );
 
@@ -121,6 +122,8 @@ function theme_front_page_settings() {
 	    <?php if (get_option('dt_rellax_switch')) { $checked_rellax = 'checked'; } ?>
 		<?php $checked_gm = ''; ?>
 	    <?php if (get_option('dt_google_maps_switch')) { $checked_gm = 'checked'; } ?>
+		<?php $checked_notify = ''; ?>
+	    <?php if (get_option('dt_notify_switch')) { $checked_notify = 'checked'; } ?>
 
 	    <div class="api-options row">
             <!-- Vimeo API -->
@@ -247,6 +250,21 @@ function theme_front_page_settings() {
 					<a href="https://dixonandmoe.com/rellax/" target="_BLANK">Webpage</a>
 				</span>
 	    	</div>
+			<!-- Notify -->
+	    	<div class="notifyjs-switch col s6 m2" style="margin-top: 20px;">
+	    		<label>Notify JS</label>
+	    		<div class="switch" style="margin-top: 10px;">
+					<label>
+						Off
+						<input type="checkbox" name="dt_notify_switch" <?php echo $checked_notify; ?>>
+						<span class="lever"></span>
+						On
+					</label>
+				</div>
+				<span class="helper-text" style="display: block; margin-top: 10px">
+					<a href="https://notifyjs.jpillora.com/" target="_BLANK">Webpage</a>
+				</span>
+	    	</div>
 	    </div>
 
 	    <div class="divider" style="margin-top: 30px; margin-bottom: 30px;"></div>
@@ -347,7 +365,7 @@ function theme_front_page_settings() {
 			From Pipelon's Github with <a href="https://github.com/Pipeloncho/ditto-theme" target="_BLANK">love</a>.
 		</div>
 		<div class="chip">
-			Ditto Theme V1.0.3
+			Ditto Theme V1.0.4
 		</div>
 	</div>
 

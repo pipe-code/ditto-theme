@@ -14,13 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="container">
         <div class="row">
             <div class="col-12">
-                Footer Template
+                © Ditto Theme <?= date('Y') ?>
             </div>
         </div>
     </div>
 </footer>
 
-</div>
+</div> <!-- -Page container -->
 <?php wp_footer(); ?>
 </body>
 </html>

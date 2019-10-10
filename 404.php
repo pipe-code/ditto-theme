@@ -11,15 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 ?>
-<section class="section-footer-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="text">
-                    <p>404 Template</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+<main id="dt_404_error">
+	<section>
+		<p>- 404 Error -</p>
+	</section>
+</main>
+
 <?php get_footer(); ?>
