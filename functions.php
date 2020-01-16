@@ -1,9 +1,9 @@
 <?php
 /*** +Theme Includes ***/
-include_once 'theme-includes-menu.php';
-include_once 'theme-includes.php';
-include_once 'inc/ct-post-duplicator.php';
-include_once 'inc/ct-user-agent.php';
+include_once 'inc/theme-includes-menu.php';
+include_once 'inc/theme-includes.php';
+include_once 'inc/dt-post-duplicator.php';
+include_once 'inc/dt-user-agent.php';
 /*** +Theme Includes ***/
 
 /*** +Register Theme Scripts ***/

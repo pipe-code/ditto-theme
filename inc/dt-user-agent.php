@@ -1,6 +1,6 @@
 <?php
 
-if (get_option('ct_user_agent_switch')) {
+if (get_option('dt_user_agent_switch')) {
 
 	$ditto_user_agent[0] = $_SERVER['HTTP_USER_AGENT'];
 

@@ -9,11 +9,11 @@ function setup_theme_admin_menus() {
 add_action("admin_menu", "setup_theme_admin_menus");
 
 if ( is_admin() ){
-	add_action('admin_enqueue_scripts', 'admin_custom_theme_scripts');
+	add_action('admin_enqueue_scripts', 'admin_ditto_theme_scripts');
 }
 
 // Admin menu scripts
-function admin_custom_theme_scripts($hook) {
+function admin_ditto_theme_scripts($hook) {
 	$current_screen = get_current_screen();
 	if ( strpos($current_screen->base, 'custom-theme-includes') === false) {
 	    return;
@@ -23,35 +23,40 @@ function admin_custom_theme_scripts($hook) {
     }
 }
 
-function register_custom_theme_settings() {
+function register_ditto_theme_settings() {
 	//register main menu settings
-	register_setting( 'custom-theme-main-group', 'dt_owl_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_slick_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_gutenberg_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_custom_css_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_custom_js_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_materialize_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_vimeo_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_list_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_login_image_src' );
-	register_setting( 'custom-theme-main-group', 'dt_duplicator_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_user_agent_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_hide_acf' );
-	register_setting( 'custom-theme-main-group', 'dt_bootstrap_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_rellax_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_google_maps_switch' );
-	register_setting( 'custom-theme-main-group', 'dt_google_maps_api_key' );
-	register_setting( 'custom-theme-main-group', 'dt_notify_switch' );
+	$dittoSettings = array (
+        'dt_owl_switch', 
+        'dt_slick_switch',
+		'dt_gutenberg_switch',
+		'dt_custom_css_switch', 
+        'dt_custom_js_switch',
+		'dt_materialize_switch',
+		'dt_vimeo_switch', 
+        'dt_list_switch',
+		'dt_login_image_src',
+		'dt_duplicator_switch', 
+		'dt_user_agent_switch',
+		'dt_hide_acf',
+		'dt_bootstrap_switch',
+		'dt_rellax_switch',
+		'dt_google_maps_switch',
+		'dt_google_maps_api_key',
+        'dt_notify_switch'
+	);
+	foreach ($dittoSettings as $setting) {
+        register_setting( 'custom-theme-main-group', $setting);
+    }
 }
-add_action( 'admin_init', 'register_custom_theme_settings' );
+add_action( 'admin_init', 'register_ditto_theme_settings' );
 
-function custom_theme_scripts_admin() {
+function ditto_theme_scripts_admin() {
     // WordPress library
     wp_enqueue_media();
 }
-add_action( 'admin_enqueue_scripts', 'custom_theme_scripts_admin' );
+add_action( 'admin_enqueue_scripts', 'ditto_theme_scripts_admin' );
 
-function custom_theme_image_uploader($width, $height ) {
+function ditto_theme_image_uploader($width, $height ) {
 
     $default_image = get_template_directory_uri() . '/images/login_default.svg';
 
@@ -90,40 +95,42 @@ function theme_front_page_settings() {
 
 	<form method="post" action="options.php">
 
-        <?php /* Option status */ ?>
-	    <?php settings_fields( 'custom-theme-main-group' ); ?>
-	    <?php do_settings_sections( 'custom-theme-main-group' ); ?>
+		<?php
+			/* Option status */ 
+			settings_fields( 'custom-theme-main-group' );
+			do_settings_sections( 'custom-theme-main-group' );
 
-	    <?php $checked_owl = ''; ?>
-	    <?php if (get_option('dt_owl_switch')) { $checked_owl = 'checked'; } ?>
-	    <?php $checked_slick = ''; ?>
-	    <?php if (get_option('dt_slick_switch')) { $checked_slick = 'checked'; } ?>
-	    <?php $checked_css = ''; ?>
-	    <?php if (get_option('dt_custom_css_switch')) { $checked_css = 'checked'; } ?>
-	    <?php $checked_js = ''; ?>
-	    <?php if (get_option('dt_custom_js_switch')) { $checked_js = 'checked'; } ?>
-	    <?php $checked_gutenberg = ''; ?>
-	    <?php if (get_option('dt_gutenberg_switch')) { $checked_gutenberg = 'checked'; } ?>
-	    <?php $checked_materialize = ''; ?>
-	    <?php if (get_option('dt_materialize_switch')) { $checked_materialize = 'checked'; } ?>
-	    <?php $checked_vimeo = ''; ?>
-	    <?php if (get_option('dt_vimeo_switch')) { $checked_vimeo = 'checked'; } ?>
-	    <?php $checked_list = ''; ?>
-	    <?php if (get_option('dt_list_switch')) { $checked_list = 'checked'; } ?>
-	    <?php $checked_duplicator = ''; ?>
-	    <?php if (get_option('dt_duplicator_switch')) { $checked_duplicator = 'checked'; } ?>
-	    <?php $checked_user_agent = ''; ?>
-	    <?php if (get_option('dt_user_agent_switch')) { $checked_user_agent = 'checked'; } ?>
-	    <?php $checked_hide_acf = ''; ?>
-	    <?php if (get_option('dt_hide_acf')) { $checked_hide_acf = 'checked'; } ?>
-	    <?php $checked_bootstrap = ''; ?>
-	    <?php if (get_option('dt_bootstrap_switch')) { $checked_bootstrap = 'checked'; } ?>
-		<?php $checked_rellax = ''; ?>
-	    <?php if (get_option('dt_rellax_switch')) { $checked_rellax = 'checked'; } ?>
-		<?php $checked_gm = ''; ?>
-	    <?php if (get_option('dt_google_maps_switch')) { $checked_gm = 'checked'; } ?>
-		<?php $checked_notify = ''; ?>
-	    <?php if (get_option('dt_notify_switch')) { $checked_notify = 'checked'; } ?>
+			$checked_owl = '';
+			$checked_slick = '';
+			$checked_css = '';
+			$checked_js = '';
+			$checked_gutenberg = '';
+			$checked_materialize = '';
+			$checked_vimeo = '';
+			$checked_list = '';
+			$checked_duplicator = '';
+			$checked_user_agent = '';
+			$checked_hide_acf = '';
+			$checked_bootstrap = '';
+			$checked_rellax = '';
+			$checked_gm = '';
+			$checked_notify = '';
+			if (get_option('dt_owl_switch')) { $checked_owl = 'checked'; }
+			if (get_option('dt_slick_switch')) { $checked_slick = 'checked'; }
+			if (get_option('dt_custom_css_switch')) { $checked_css = 'checked'; }
+			if (get_option('dt_custom_js_switch')) { $checked_js = 'checked'; }
+			if (get_option('dt_gutenberg_switch')) { $checked_gutenberg = 'checked'; }
+			if (get_option('dt_materialize_switch')) { $checked_materialize = 'checked'; }
+			if (get_option('dt_vimeo_switch')) { $checked_vimeo = 'checked'; }
+			if (get_option('dt_list_switch')) { $checked_list = 'checked'; }
+			if (get_option('dt_duplicator_switch')) { $checked_duplicator = 'checked'; }
+			if (get_option('dt_user_agent_switch')) { $checked_user_agent = 'checked'; }
+			if (get_option('dt_hide_acf')) { $checked_hide_acf = 'checked'; }
+			if (get_option('dt_bootstrap_switch')) { $checked_bootstrap = 'checked'; }
+			if (get_option('dt_rellax_switch')) { $checked_rellax = 'checked'; }
+			if (get_option('dt_google_maps_switch')) { $checked_gm = 'checked'; }
+			if (get_option('dt_notify_switch')) { $checked_notify = 'checked'; }
+		?>
 
 	    <div class="api-options row">
             <!-- Vimeo API -->
@@ -351,7 +358,7 @@ function theme_front_page_settings() {
 
 	    <div class="divider" style="margin-top: 30px; margin-bottom: 30px;"></div>
 
-	    <?php custom_theme_image_uploader( $width = 115, $height = 115 ); ?>
+	    <?php ditto_theme_image_uploader( $width = 115, $height = 115 ); ?>
 
 	    <button class="btn waves-effect waves-light" type="submit" name="submit" id="submit" style="margin-top: 40px;">
 	    	Save Changes
@@ -365,7 +372,7 @@ function theme_front_page_settings() {
 			From Pipelon's Github with <a href="https://github.com/Pipeloncho/ditto-theme" target="_BLANK">love</a>.
 		</div>
 		<div class="chip">
-			Ditto Theme V1.0.4
+			Ditto Theme V1.0.5
 		</div>
 	</div>
 
@@ -374,28 +381,32 @@ function theme_front_page_settings() {
 
 
 <script type="text/javascript">
-	// The "Upload" button
-	$('.upload_image_button').click(function() {
-	    var send_attachment_bkp = wp.media.editor.send.attachment;
-	    var button = $(this);
-	    wp.media.editor.send.attachment = function(props, attachment) {
-	        $(button).parent().prev().attr('src', attachment.url);
-	        $(button).prev().val(attachment.url);
-	        wp.media.editor.send.attachment = send_attachment_bkp;
-	    }
-	    wp.media.editor.open(button);
-	    return false;
-	});
+	jQuery(window).ready(function(){
+		// The "Upload" button
+		jQuery('.upload_image_button').click(function(event) {
+			event.preventDefault(); 
+			var send_attachment_bkp = wp.media.editor.send.attachment;
+			var button = jQuery(this);
+			wp.media.editor.send.attachment = function(props, attachment) {
+				jQuery(button).parent().prev().attr('src', attachment.url);
+				jQuery(button).prev().val(attachment.url);
+				wp.media.editor.send.attachment = send_attachment_bkp;
+			}
+			wp.media.editor.open(button);
+			return false;
+		});
 
-	// The "Remove" button (remove the value from input type='hidden')
-	$('.remove_image_button').click(function() {
-	    var answer = confirm('Are you sure?');
-	    if (answer == true) {
-	        var src = $(this).parent().prev().attr('data-src');
-	        $(this).parent().prev().attr('src', src);
-	        $(this).prev().prev().val('');
-	    }
-	    return false;
+		// The "Remove" button (remove the value from input type='hidden')
+		jQuery('.remove_image_button').click(function(event) {
+			event.preventDefault(); 
+			var answer = confirm('Are you sure?');
+			if (answer == true) {
+				var src = jQuery(this).parent().prev().attr('data-src');
+				jQuery(this).parent().prev().attr('src', src);
+				jQuery(this).prev().prev().val('');
+			}
+			return false;
+		});
 	});
 </script>
 <?php } ?>

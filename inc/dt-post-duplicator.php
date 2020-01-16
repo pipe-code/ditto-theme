@@ -1,5 +1,5 @@
 <?php
-if (get_option('ct_duplicator_switch')) {
+if (get_option('dt_duplicator_switch')) {
 	/*
 	* Function creates post duplicate as a draft and redirects then to the edit post screen
 	*/

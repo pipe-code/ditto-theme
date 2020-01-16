@@ -1,4 +1,4 @@
-Ditto Theme v1.0.4
+Ditto Theme v1.0.5
 =====
 
 > A simple WordPress theme created for developers. This contains a compilation of Front-end libraries that have helped me with the development of a large number of websites.

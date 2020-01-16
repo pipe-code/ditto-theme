@@ -16,8 +16,6 @@
 
 // Use Eg. $(".element").inViewport(function(px){ if(px) $(this).addClass("cssAnimation") ; });
 
-(function($) {
-  $(window).ready(function(){
-    // Code...
-  });
-})( jQuery );
+$(window).ready(function(){
+  // Code...
+});
